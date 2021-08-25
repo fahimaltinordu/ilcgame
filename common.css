@@ -1,37 +1,136 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
 
-/****************************************/
-/* common styles used for v1 through v4 */
-/****************************************/
-
-body          { font-family: Arial, Helvetica, sans-serif; background-color: black; color: white; }
-a { color: magenta; }
-#stats        { border: 2px solid lime; }
-#controls     { width: 28em; float: left; padding: 1em; font-size: 0.7em; }
-#controls th  { text-align: right; vertical-align: middle; }
-#instructions { clear: left; float: left; width: 17em; padding: 1em; border: 1px solid black; box-shadow: 0 0 5px lime; }
-#racer        { position: relative; z-index: 0; width: 640px; height: 480px; margin-left: 20em; border: 2px solid magenta; }
-#canvas       { position: absolute; z-index: 0; width: 640px; height: 480px; z-index: 0; background-color: black; /* default color when drawing out of bounds (eg, we are up a high hill and the background is too low)*/ }
-#mute         { background-position:   0px 0px; width: 32px; height: 32px; background: url(images/mute.png); display: inline-block; cursor: pointer; margin-left: 20em; }
-#mute.on      { background-position: -32px 0px; }
+}
+body          { 
+    font-family: Arial, Helvetica, sans-serif; 
+    background-color: black; 
+    color: white; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+    width:100%;
+}
+a { 
+    color: magenta; 
+}
+#stats {
+    border: 2px solid lime; 
+}
+#controls     { 
+    /* width: 28em;  */
+    /* float: left;  */
+    flex:2;
+    /* padding: 1em;  */
+    font-size: 0.5em; 
+}
+#controls th  { 
+    text-align: right; 
+    vertical-align: middle; 
+}
+#instructions { 
+    /* clear: left; 
+    float: left;  */
+    /* width: 17em;  */
+    font-size: 0.7em;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex:1;
+    /* padding: 1em;  */
+    border: 1px solid black; 
+    box-shadow: 0 0 5px lime; 
+}
+#containerStats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:25%;
+    width:100%;
+    padding:10px;
+}
+#racer { 
+    position: relative; 
+    /* z-index: 0;  */
+    /* width: 100vw;  */
+    height: calc(100vh - 35%);  
+    /* margin-left: 20em;  */
+    border: 2px solid rgb(44, 44, 44); 
+}
+#canvas { 
+    /* position: absolute;  */
+    /* z-index: 0;  */
+    width: 100%; 
+    height: 100%; 
+    /* z-index: 0;  */
+    background-color: black; /* default color when drawing out of bounds (eg, we are up a high hill and the background is too low)*/ 
+}
+#fps {
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+#mute { 
+    background-position: 0px 0px; 
+    width: 32px; 
+    height: 32px; 
+    background: url(images/mute.png); 
+    display: inline-block; 
+    cursor: pointer; margin-left: 20em; 
+}
+#mute.on { 
+    background-position: -32px 0px; 
+}
 
 /**************************************************/
-/* rudimentary heads up display (only used in v4) */
+/* rudimentary heads up display */
 /**************************************************/
 
-#hud                   { position: absolute; z-index: 1; width: 640px; padding: 5px 0; font-family: Verdana, Geneva, sans-serif; font-size: 0.8em; background-color: rgba(255,0,0,0.4); color: black; border-bottom: 2px solid black; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
-#hud .hud              { background-color: rgba(255,255,255,0.6); padding: 5px; border: 1px solid black; margin: 0 5px; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s; }
-#hud #speed            { float: right; }
-#hud #current_lap_time, #hud #current_level, #hud #turbo_left { float: left;  }
-#hud #last_lap_time    { float: left; display: none;  }
-#hud #fast_lap_time, #hud #remaining_time    { display: block; width: 12em;  margin: 0 auto; text-align: center; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s; }
+#hud {
+    display:flex;
+    align-items: center; 
+    justify-content: space-between; 
+    position: absolute; 
+    z-index: 1; 
+    width: 100%; 
+    height:40px;
+    padding: 5px 0; 
+    font-family: Verdana, Geneva, sans-serif; 
+    font-size: 0.8em; color: black; 
+    border-bottom: 2px solid black; 
+    background-color: aliceblue;
+}
+#hud .hud { 
+    background-color: rgba(255,255,255,0.6); 
+    /* padding: 5px;  */
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:40px;
+    border: 1px solid black; 
+    /* margin: 0 5px;  */
+    transition-property: background-color; 
+    transition-duration: 2s; 
+    -webkit-transition-property: background-color; 
+    -webkit-transition-duration: 2s; 
+}
+
+#hud #last_lap_time    { display: none;  }
+#hud #fast_lap_time, #hud #remaining_time    { text-align: center; transition-property: background-color; transition-duration: 2s; -webkit-transition-property: background-color; -webkit-transition-duration: 2s; }
 #hud .value            { color: black; font-weight: bold; }
 #hud .fastest          { background-color: rgba(255,215,0,0.5); }
 #hud .magenta       { background-color: magenta; }
 
 @keyframes anim-heartbeat {
-    0%   {font-size: 175%;}
-    25%  {font-size: 150%;}
-    50%  {font-size: 125%;}
+    0%   {font-size: 100%;}
+    /* 25%  {font-size: 100%;}
+    50%  {font-size: 100%;} */
     100% {font-size: 100%;}
 }
 
@@ -66,21 +165,28 @@ a { color: magenta; }
 
 /* Mobile gamepad */
 #gamepad {
-    clear: left; width: 17em; border: 1px solid black; box-shadow: 0 0 5px lime;
-    margin-left: 20em;
-    width: 640px;
-    height: 300px;
+    /* clear: left;  */
+    width: 17em; 
+    border: 1px solid black; 
+    /* box-shadow: 0 0 5px lime; */
+    /* margin-left: 20em; */
+    width: 100%;
+    height: 10%;
     background: rgba(255,0,0,0.4);
-    position: relative;
+    /* position: relative; */
     text-align: center;
-    display: inline-block;
+    display: flex;
 }
 .gamepad-button {
     background: grey;
-    width: 33%;
-    height: 50%;
+    /* width: 33%; */
+    flex:1;
+    height: 100%;
     display: block;
-    float: left;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    /* float: left; */
 
     /* Disable selection of text for gamepad buttons (so that user can press without selecting the text) */
    -moz-user-select: none;
@@ -105,3 +211,22 @@ a { color: magenta; }
 /* #gamepad-down { } */
 
 
+@media screen and (max-width:867px) {
+    #instructions { 
+        display:none;
+    }
+    #controls {
+        flex:initial;
+    }
+    /* 
+    #instructions {
+        display:none;
+    }
+    #racer {
+        margin-left:initial;
+        width:100%;
+    }
+    #mute {
+        display:none;
+    } */
+}
