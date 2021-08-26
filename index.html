@@ -64,7 +64,8 @@
     <div id='instructions'>
       <p>Use the <b>arrow keys</b> to drive the car.</p>
       <p>Cross the finish line before time runs out.</p>
-      <p>Double click for fullscreen. Press CONTROL for turbo.</p>
+      <p>Double click for fullscreen.</p>
+      <p>Press CONTROL for turbo.</p>
     </div>
   </div>
   
@@ -76,26 +77,29 @@
   <span id="mute"></span> -->
   
     <div id="racer">
-      <div id="hud">
-        <span id="speed" class="hud"><span id="speed_value" class="value">0</span> mph</span>
-        <span id="current_lap_time" class="hud">Time: <span id="current_lap_time_value" class="value">0.0</span></span> 
-        <span id="current_level" class="hud">Level: <span id="current_level_value" class="value">0</span></span> 
-        <span id="turbo_left" class="hud">Turbo: <span id="turbo_left_value" class="value">0</span></span> 
-        <span id="remaining_time" class="hud">Time: <span id="remaining_time_value" class="value">0.0</span></span> 
-        <span id="last_lap_time" class="hud">Last Lap: <span id="last_lap_time_value" class="value">0.0</span></span>
-        <span id="fast_lap_time" class="hud">Fastest Lap: <span id="fast_lap_time_value" class="value">0.0</span></span>
-      </div>
+      
+
       <canvas id="canvas" >
         Sorry, this example cannot be run because your browser does not support the &lt;canvas&gt; element
       </canvas>
-    </div>
-  
-    <div id='gamepad'>
-        <div id='gamepad-turbo' class='gamepad-button'><span>Turbo</span></div>
+
+      <div id='gamepad'>
+        <div id='gamepad-turbo' class='gamepad-button'><img src="images/turbo.png" alt=""></div>
         <div id='gamepad-up' class='gamepad-button'><span>^</span></div>
         <div id='gamepad-left' class='gamepad-button'><span><</span></div>
         <div id='gamepad-right' class='gamepad-button'><span>></span></div>
         <div id='gamepad-down' class='gamepad-button'><span>v</span></div>
+      </div>
+    </div>
+  
+    <div id="hud">
+      <span id="speed" class="hud"><span id="speed_value" class="value">0</span> mph</span>
+      <span id="current_lap_time" class="hud">Time: <span id="current_lap_time_value" class="value">0.0</span></span> 
+      <span id="current_level" class="hud">Level: <span id="current_level_value" class="value">0</span></span> 
+      <span id="turbo_left" class="hud">Turbo: <span id="turbo_left_value" class="value">0</span></span> 
+      <span id="remaining_time" class="hud">Time: <span id="remaining_time_value" class="value">0.0</span></span> 
+      <span id="last_lap_time" class="hud">Last Lap: <span id="last_lap_time_value" class="value">0.0</span></span>
+      <span id="fast_lap_time" class="hud">Fastest Lap: <span id="fast_lap_time_value" class="value">0.0</span></span>
     </div>
 
   <script src="stats.js"></script>
