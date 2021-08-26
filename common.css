@@ -24,6 +24,7 @@ a {
 #controls     { 
     flex:2;
     font-size: 0.5em; 
+    height: 100%;
 }
 #controls th  { 
     text-align: right; 
@@ -33,23 +34,24 @@ a {
     font-size: 0.7em;
     display:flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     flex:1;
     border: 1px solid black; 
     box-shadow: 0 0 5px lime; 
+    height: 100%;
 }
 #containerStats {
     display: flex;
     align-items: center;
     justify-content: center;
-    height:25%;
+    height:15%;
     width:100%;
     padding:10px;
 }
 #racer { 
     position: relative; 
-    height: 69%;  
+    height:79%;  
     border: 2px solid rgb(44, 44, 44); 
 }
 #canvas { 
@@ -61,6 +63,15 @@ a {
     display:flex;
     align-items: center;
     gap:10px;
+}
+#tbody {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height:inherit;
 }
 /* #mute { 
     background-position: 0px 0px; 
@@ -219,13 +230,18 @@ a {
     border-radius: 50%;
     cursor:pointer;
     z-index: 100;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+    transition:transform 0.3s ease;
+}
+#gamepad-turbo:active {
+    transform:scale(0.88);
 }
 #gamepad-turbo img {
     width:70px;
     height:70px;
 }
 #gamepad-turbo:active {
-    background: lawngreen; 
+    background: rgba(126, 252, 0, 0.4); 
 }
 
 
@@ -233,8 +249,11 @@ a {
     #instructions { 
         display:none;
     }
-    #controls {
-        flex:initial;
+    #controls, #containerStats {
+        display: none;
+    }
+    #racer {
+        height: 94%;
     }
     
 }
